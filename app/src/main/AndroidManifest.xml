@@ -15,12 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LT2APPS"
         tools:targetApi="31">
-        <activity
-            android:name=".MainActivity2as"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
