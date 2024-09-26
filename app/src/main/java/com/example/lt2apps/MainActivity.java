@@ -2,6 +2,8 @@ package com.example.lt2apps;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,6 +48,49 @@ public class MainActivity extends AppCompatActivity {
         // Mendapatkan daftar nama sheet dari Google Sheets
         getSheetsFromSpreadsheet();
 
+
+        input1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                updateAndSendData();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        input2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                updateAndSendData();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        input3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                updateAndSendData();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+// Metode untuk mengumpulkan data dan mengirimkannya
+
+
         // Listener untuk tombol submit
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +131,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void updateAndSendData() {
+        String nama = input1.getText().toString();
+        String email = input2.getText().toString();
+        String umur = input3.getText().toString();
+
+        sendDataToSpreadsheet(nama, email, umur);
+    }
     private void getSheetsFromSpreadsheet() {
         // URL dari Google Apps Script yang mengembalikan daftar sheet
         String url = "https://script.google.com/macros/s/AKfycbzcrt_bGW_peKsuTeZ5ucfou5YKZPoe_QJa2UbuNSAKDtWv8sGZQ9GPTDOhEK4iBwXf/exec";
